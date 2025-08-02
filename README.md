@@ -1,49 +1,34 @@
-A server app built using [Shelf](https://pub.dev/packages/shelf),
-configured to enable running with [Docker](https://www.docker.com/).
+# Dart Basics: First Steps
 
-This sample code handles HTTP GET requests to `/` and `/echo/<message>`
+Este repositorio contiene ejercicios introductorios para aprender la sintaxis básica de Dart, como funciones, variables y tipos de datos primitivos.
 
-# Running the sample
+---
 
-## Running with the Dart SDK
+## 0. Hello, World!
 
-You can run the example with the [Dart SDK](https://dart.dev/get-dart)
-like this:
+### Introducción
+Cada aplicación en Dart comienza con una función principal `main()`.  
+Las funciones que no devuelven un valor explícito utilizan el tipo `void`.  
+Para mostrar texto en consola, se utiliza la función `print()`.
 
-```
-$ dart run bin/server.dart
-Server listening on port 8080
-```
+### Instrucciones
+1. Crea un archivo Dart.
+2. Define una función `main()`.
+3. Dentro de la función, imprime el texto: `Hello, World!`.
 
-And then from a second terminal:
-```
-$ curl http://0.0.0.0:8080
-Hello, World!
-$ curl http://0.0.0.0:8080/echo/I_love_Dart
-I_love_Dart
-```
+---
 
-## Running with Docker
+## 1. Hello, Dart Variables!
 
-If you have [Docker Desktop](https://www.docker.com/get-started) installed, you
-can build and run with the `docker` command:
+### Objetivo
+Aprender a declarar y asignar variables utilizando los tipos de datos básicos de Dart.
 
-```
-$ docker build . -t myserver
-$ docker run -it -p 8080:8080 myserver
-Server listening on port 8080
-```
+### Instrucciones
+Declara las siguientes variables con los valores indicados:
+- Un entero `age` con el valor `25`.
+- Un número decimal `height` con el valor `1.75`.
+- Un booleano `isStudent` con el valor `true`.
+- Una cadena `name` con el valor `"Alex"`.
 
-And then from a second terminal:
-```
-$ curl http://0.0.0.0:8080
-Hello, World!
-$ curl http://0.0.0.0:8080/echo/I_love_Dart
-I_love_Dart
-```
+Imprime una oración combinando esas variables con el siguiente formato:
 
-You should see the logging printed in the first terminal:
-```
-2021-05-06T15:47:04.620417  0:00:00.000158 GET     [200] /
-2021-05-06T15:47:08.392928  0:00:00.001216 GET     [200] /echo/I_love_Dart
-```
