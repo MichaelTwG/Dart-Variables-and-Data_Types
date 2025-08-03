@@ -69,8 +69,8 @@ Practicar el uso de var y la declaración explícita de tipos.
 
 ### Instrucciones
 Declara:
- - Una variable var asignada con el valor 42.
- - Una variable int asignada con el valor 7.
+ - Una variable `var` asignada con el valor `42`.
+ - Una variable `int` asignada con el valor `7`.
  - Imprime el tipo de cada variable utilizando .runtimeType.
 
 ### Resultado Esperado:
