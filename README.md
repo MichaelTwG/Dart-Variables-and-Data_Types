@@ -79,3 +79,20 @@ The type of myVar is: int
 The type of myInt is: int
 
 ```
+
+## 4. Seguridad ante valores nulos en acción  
+**Obligatorio**
+
+### Objetivo  
+Aprender a trabajar con variables que pueden ser null (nullable) y las que no (non-nullable).
+
+### Instrucciones
+
+- Declara una variable nullable `String?` llamada `nickname`.  
+- Asígnale inicialmente el valor `null`, luego actualízala a `"Lex"`.  
+- Imprime su valor de forma segura usando un chequeo de null o un operador null-aware.
+
+### Resultado esperado
+```
+Nickname is: Lex
+```
