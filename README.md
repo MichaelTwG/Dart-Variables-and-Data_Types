@@ -81,7 +81,6 @@ The type of myInt is: int
 ```
 
 ## 4. Seguridad ante valores nulos en acción  
-**Obligatorio**
 
 ### Objetivo  
 Aprender a trabajar con variables que pueden ser null (nullable) y las que no (non-nullable).
@@ -95,4 +94,31 @@ Aprender a trabajar con variables que pueden ser null (nullable) y las que no (n
 ### Resultado esperado
 ```
 Nickname is: Lex
+```
+
+## 5. Patio de Juegos de Operadores (Operators Playground)
+
+### Objetivo  
+Usar operadores aritméticos, lógicos y de comparación.
+
+### Instrucciones
+
+- Crea dos variables enteras: `a = 10`, `b = 3`.
+- Imprime los resultados de:
+
+  - `a + b`, `a - b`, `a * b`, `a / b`
+  - `a > b`, `a == b`
+  - `a > 5 && b < 5`, `a < 5 || b < 5`
+
+### Salida Esperada
+
+```
+a + b = 13  
+a - b = 7  
+a * b = 30  
+a / b = 3.3333333333333335  
+a > b = true  
+a == b = false  
+a > 5 && b < 5 = true  
+a < 5 || b < 5 = true
 ```
