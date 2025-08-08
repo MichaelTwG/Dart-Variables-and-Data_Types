@@ -452,3 +452,156 @@ butter
 * `.sort()` modifica la lista original directamente (in-place).
 
 ---
+
+## Functions
+
+**Introducción y contexto**
+Las funciones nos permiten agrupar instrucciones, reutilizar lógica y escribir código más claro y modular. En Dart, las funciones admiten varios tipos de parámetros, estilos de sintaxis concisos y formas potentes de estructurar el comportamiento. En este proyecto, escribirás y llamarás funciones, trabajarás con parámetros y entenderás cómo el ámbito de las variables afecta tu código, todo a través de desafíos prácticos.
+
+---
+
+### 0. Hello Function
+
+**Objetivo:** Declarar e invocar una función básica.
+
+**Instrucciones:**
+
+* Define una función llamada `sayHello` que no reciba parámetros y que imprima un mensaje de bienvenida en la consola.
+* Luego, llama a la función.
+
+**Salida esperada:**
+
+```
+Hello, Dart!
+```
+
+---
+
+### 1. Personalized Greeting
+
+**Objetivo:** Usar parámetros posicionales.
+
+**Instrucciones:**
+
+* Define una función llamada `greet` que reciba un parámetro `String` llamado `name`.
+* La función debe imprimir un saludo que incluya el nombre.
+* Llama a la función usando el valor `"Sam"`.
+
+**Salida esperada:**
+
+```
+Hello, Sam!
+```
+
+---
+
+### 2. Full Name Builder
+
+**Objetivo:** Usar parámetros nombrados.
+
+**Instrucciones:**
+
+* Define una función llamada `getFullName` que reciba dos parámetros nombrados de tipo `String`: `first` y `last`.
+* La función debe retornar un `String` que combine ambos como un nombre completo.
+* Llama a la función con `"Ada"` y `"Lovelace"`, e imprime el resultado.
+
+**Salida esperada:**
+
+```
+Full name: Ada Lovelace
+```
+
+---
+
+### 3. Temperature Conversion
+
+**Objetivo:** Usar valores de retorno en funciones.
+
+**Instrucciones:**
+
+* Crea una función llamada `toCelsius` que reciba un parámetro `double` llamado `fahrenheit`.
+* La función debe retornar la temperatura convertida a Celsius.
+* Llama a la función con el valor `98.6` e imprime el resultado.
+
+**Salida esperada:**
+
+```
+Celsius: 37.0
+```
+
+---
+
+### 4. Repeating Multiples
+
+**Objetivo:** Usar parámetros posicionales opcionales con valores por defecto.
+
+**Instrucciones:**
+
+* Define una función llamada `printMultiples` que reciba un parámetro requerido de tipo `int` llamado `number` y un parámetro opcional llamado `max` con valor por defecto de `5`.
+* La función debe imprimir los primeros `max` múltiplos de `number`.
+* Llama a la función dos veces: una vez con un solo argumento `(3)`, y otra con ambos argumentos `(4, 3)`.
+
+**Salida esperada:**
+
+```
+3 6 9 12 15
+4 8 12
+```
+
+---
+
+### 5. Quick Square
+
+**Objetivo:** Usar la sintaxis de función flecha.
+
+**Instrucciones:**
+
+* Define una función llamada `square` que reciba un parámetro `int` llamado `x` y retorne el cuadrado de `x` usando sintaxis de flecha.
+* Llama a `square(6)` e imprime el resultado.
+
+**Salida esperada:**
+
+```
+36
+```
+
+---
+
+### 6. Anonymous Power
+
+**Objetivo:** Usar funciones anónimas con `.forEach()`.
+
+**Instrucciones:**
+
+* Crea una lista llamada `numbers` que contenga `[1, 2, 3, 4]`.
+* Usa `.forEach()` y una función anónima para imprimir el cuadrado de cada número en la lista.
+
+**Salida esperada:**
+
+```
+1
+4
+9
+16
+```
+
+---
+
+### 7. Local vs. Global
+
+**Objetivo:** Entender el ámbito (scope) de las variables.
+
+**Instrucciones:**
+
+* Declara una variable global llamada `message` con el valor `"Global"`.
+* Luego, define una función llamada `printMessage` que declare una variable local también llamada `message` con el valor `"Local"` y la imprima.
+* Llama a `printMessage()` y luego imprime la variable global.
+
+**Salida esperada:**
+
+```
+Local
+Global
+```
+
+---
