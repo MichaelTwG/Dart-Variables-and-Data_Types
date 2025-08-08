@@ -1,4 +1,4 @@
-import '0_Shopping_List.dart';
+import '0_shopping_list.dart';
 void main () {
   for (var item in getShoppingList()) {
     print(item);
