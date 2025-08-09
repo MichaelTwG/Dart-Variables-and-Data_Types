@@ -605,3 +605,320 @@ Global
 ```
 
 ---
+
+# Package Management
+
+**Introducción y contexto**
+La fortaleza de Dart va más allá de su lenguaje base gracias a un rico ecosistema de paquetes de la comunidad.
+Estos paquetes te permiten agregar funciones poderosas a tus programas, como el formateo de fechas o el manejo correcto de caracteres Unicode, con una configuración mínima.
+En esta sección aprenderás a usar el archivo `pubspec.yaml` para administrar dependencias e integrar paquetes como **intl** y **characters** en tu código.
+
+---
+
+## 0. Configure Your Project
+
+**Objetivo:** Crear un archivo `pubspec.yaml` con dependencias externas.
+
+**Instrucciones:**
+
+* Crea un archivo llamado `pubspec.yaml` y configúralo así:
+
+  * Nombre del proyecto: `package_demo`
+  * Descripción: `"A simple demo using packages"`
+  * Dependencia: `intl` (versión `any`)
+* Ejecuta el comando necesario para obtener el paquete (`dart pub get` o `flutter pub get` según el entorno).
+* No es necesario escribir código Dart para esta tarea.
+
+**Salida esperada:**
+
+* El archivo se resuelve correctamente y el paquete **intl** queda instalado.
+
+---
+
+## 1. Format Current Date
+
+**Objetivo:** Usar el paquete **intl** para formatear fechas.
+
+**Instrucciones:**
+
+* Importa el paquete `intl`.
+* Define una función `formatToday` sin parámetros que:
+
+  * Obtenga la fecha y hora actual.
+  * La formatee con el patrón `"EEEE, MMMM d, y"`, por ejemplo: `"Monday, July 15, 2025"`.
+  * Imprima el resultado.
+
+**Salida esperada (ejemplo):**
+
+```
+Monday, July 15, 2025
+```
+
+**Sugerencias:**
+
+* Usa `DateFormat('EEEE, MMMM d, y').format(DateTime.now())`.
+
+---
+
+## 2. Count Visible Characters
+
+**Objetivo:** Usar el paquete **characters** para manejar Unicode correctamente.
+
+**Instrucciones:**
+
+* Importa el paquete `characters`.
+* Define una función `countVisibleCharacters` que:
+
+  * Reciba un parámetro `String text`.
+  * Devuelva el número de caracteres visibles (grapheme clusters).
+* Llama a la función con `"👨‍👩‍👧‍👦 family"` y muestra el resultado.
+
+**Salida esperada:**
+
+```
+Visible characters: 8
+```
+
+**Sugerencias:**
+
+* Usa `.characters.length` para contar graphemes.
+
+---
+
+## 3. Dynamic Greeting Based on Time
+
+**Objetivo:** Combinar lógica con uso de paquetes externos.
+
+**Instrucciones:**
+
+* Define una función `greetingMessage` que:
+
+  * Reciba un parámetro `String name`.
+  * Use la hora actual del sistema (`DateTime.now().hour`) para determinar el saludo:
+
+    * 5–11: `"Good morning, NAME!"`
+    * 12–17: `"Good afternoon, NAME!"`
+    * 18–4: `"Good evening, NAME!"`
+* Llama a la función con `"Ada"` y muestra el resultado.
+
+**Salida esperada (ejemplo):**
+
+```
+Good afternoon, Ada!
+```
+
+**Sugerencias:**
+
+* Recuerda manejar correctamente el rango nocturno que cruza la medianoche.
+
+---
+
+## 4. Print Characters One by One
+
+**Objetivo:** Iterar sobre grapheme clusters de Unicode.
+
+**Instrucciones:**
+
+* Define una función `printEachCharacter` que:
+
+  * Reciba un parámetro `String input`.
+  * Imprima cada carácter visible en una línea distinta.
+  * Use el paquete `characters` para evitar cortar emojis o caracteres combinados.
+* Llama a la función con `"Dart 🚀"`.
+
+**Salida esperada:**
+
+```
+D
+a
+r
+t
+
+🚀
+```
+
+**Sugerencias:**
+
+* Itera usando `for (var ch in input.characters)`.
+
+---
+
+**Mas Contenido**
+
+## 5. Upgrade Dependencies
+
+**Objetivo:** Actualizar los paquetes instalados a sus últimas versiones compatibles.
+
+**Instrucciones:**
+
+* En la terminal, ejecuta el comando para actualizar todos los paquetes declarados en `pubspec.yaml` a la última versión permitida por sus restricciones.
+* Verifica que el archivo `pubspec.lock` muestre las nuevas versiones.
+
+**Salida esperada:**
+
+* El comando se ejecuta sin errores y las versiones de los paquetes en `pubspec.lock` han cambiado (si había actualizaciones disponibles).
+
+**Sugerencias:**
+
+* Usa `dart pub upgrade` o `flutter pub upgrade` según tu entorno.
+
+---
+
+## 6. Multiple Package Integration
+
+**Objetivo:** Integrar y usar varios paquetes en un solo programa.
+
+**Instrucciones:**
+
+* Agrega al `pubspec.yaml` los paquetes `intl` y `characters`.
+* Crea una función `formattedNameInfo` que:
+
+  * Reciba un nombre en minúsculas.
+  * Lo convierta a mayúsculas.
+  * Imprima el nombre junto con la fecha actual formateada con el patrón `"y/MM/dd"`.
+* Llama a la función con `"marie"`.
+
+**Salida esperada (ejemplo):**
+
+```
+MARIE - 2025/08/08
+```
+
+**Sugerencias:**
+
+* Importa ambos paquetes y combínalos en la misma función.
+
+---
+
+## 7. Check Installed Package Version
+
+**Objetivo:** Verificar la versión instalada de un paquete.
+
+**Instrucciones:**
+
+* Abre el archivo `pubspec.lock`.
+* Busca la entrada del paquete `intl`.
+* Imprime en consola la versión que aparece.
+
+**Salida esperada (ejemplo):**
+
+```
+intl version: 0.19.0
+```
+
+**Sugerencias:**
+
+* No es necesario escribir código Dart; basta con inspeccionar el archivo `pubspec.lock`.
+
+---
+
+# Proyecto Integrador: Generador Modular de Reportes en Consola
+
+## Contexto y Desafío
+
+Se te asigna la tarea de construir una aplicación modular en consola con Dart que genere un reporte diario de productividad.
+El programa debe saludar al usuario, mostrar la fecha actual, listar sus tareas con indicadores de estado y proporcionar un resumen.
+Además, debe demostrar el manejo adecuado de caracteres Unicode, formateo de cadenas, colecciones y uso de paquetes externos.
+
+Esta es tu oportunidad para aplicar todo lo aprendido hasta ahora: tipos de datos, flujo de control, funciones, colecciones, gestión de paquetes y argumentos por línea de comandos, todo en un proyecto cohesivo y realista.
+
+---
+
+## Requisitos Técnicos
+
+* El proyecto debe estar escrito en un solo archivo llamado `report.dart`.
+* Debe ejecutarse desde la línea de comandos, aceptando argumentos mediante `List<String> arguments` en `main()`.
+* Debes usar al menos los siguientes paquetes externos:
+
+  * **intl** para formateo de fechas y horas.
+  * **characters** para contar correctamente los grapheme clusters (caracteres visibles Unicode).
+* Toda la lógica debe estar organizada en funciones reutilizables.
+
+---
+
+## Expectativas Generales
+
+* Extraer y parsear toda la información necesaria desde la entrada por línea de comandos.
+* Usar estructuras de control donde sea necesario (condicionales, bucles).
+* Usar colecciones para manejar e iterar sobre las tareas.
+* Implementar funciones para separar la lógica del reporte.
+* Incluir operaciones seguras para cadenas Unicode.
+* Mostrar un reporte limpio y legible en la consola.
+
+---
+
+## Comportamiento de la Aplicación
+
+* Leer el nombre del usuario desde el primer argumento CLI.
+* Leer el título del reporte desde el segundo argumento.
+* Parsear los argumentos siguientes como cadenas de tareas con formato `NombreTarea:true/false`.
+* Generar un saludo basado en la hora actual del sistema.
+* Formatear la fecha actual en formato largo en inglés.
+* Mostrar el título del reporte y contar sus caracteres visibles (grapheme clusters).
+* Imprimir todas las tareas con indicadores visuales de estado (✔️ o ❌).
+* Imprimir un resumen con la cantidad de tareas completadas vs. total.
+
+---
+
+## Antes de Comenzar: Trabajando con Argumentos CLI en Dart
+
+Para acceder a argumentos desde la línea de comandos, usa el parámetro `arguments` de la función `main()`:
+
+```dart
+void main(List<String> arguments) {
+  // arguments es un List<String> desde la CLI
+}
+```
+
+Ejecuta tu programa desde la terminal con un comando como:
+
+```
+dart run report.dart Alice "📝 Daily Report" "Review PR:true" "Write docs:false"
+```
+
+---
+
+## Ejemplo de Llamada CLI
+
+```
+dart run report.dart Ada "📝 Daily Report" "Write tests:true" "Fix bugs:false" "Read docs:true"
+```
+
+## Ejemplo de Salida
+
+```
+Good morning, Ada!
+Tuesday, August 20, 2025
+
+📝 Daily Report
+Title has 14 characters.
+
+✅ Write tests
+❌ Fix bugs
+✅ Read docs
+
+You completed 2 out of 3 tasks.
+```
+
+---
+
+## Pistas para el Desarrollo (Explora Independientemente)
+
+* Consulta la documentación de los paquetes **intl** y **characters**.
+* Decide cuándo usar funciones flecha, bucles o `.forEach()`.
+* Piensa críticamente en qué estructuras de datos usar para almacenar tareas y sus estados.
+* Maneja posibles errores (por ejemplo, parámetros faltantes o formatos inválidos).
+* Explora las utilidades de Dart para manipulación de strings, `split`, listas y mapas.
+
+---
+
+## Criterios de Finalización
+
+* La aplicación funciona mediante CLI con entradas dinámicas.
+* Usa correctamente `pubspec.yaml` para gestión de paquetes.
+* Parsea correctamente las cadenas de tareas y sus estados.
+* Utiliza funciones modulares y evita la repetición.
+* La salida es determinista y cumple con la especificación.
+* El código es legible e idiomático.
+
+---
