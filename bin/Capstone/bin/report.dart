@@ -24,8 +24,9 @@ String getReport(String text){
   return '${text.characters}\nTitle has ${characters.length} characters.\n';
 }
 
-List<Map> getTasks(List<String> arguments){
-  List<Map> tasks = [];
+Map getTasks(List<String> arguments){
+  Map tasks = {};
+  int trueTask = 0;
 
   for(int i = 2; i < arguments.length; i++){
     List keyValue = arguments[i].split(':');
@@ -40,25 +41,27 @@ List<Map> getTasks(List<String> arguments){
     
     if(valueStr == 'true'){
       value = true;
+      trueTask += 1;
     } else if(valueStr == 'false'){
       value = false;
     } else {
       print('⚠️ Invalid value for task "${keyValue[0]}": "${keyValue[1]}". Should be "true" or "false".');
       continue;
     }
-    
-    tasks.add({keyValue[0]:value});
+    tasks['totalTasks'] = arguments.length - 2;
+    tasks['trueTasks'] = trueTask;
+    tasks[keyValue[0]] = value;
   }
   return tasks;
 }
 
-void printTasks(List<Map> tasks) {
-  tasks.forEach((element) {
-    element.forEach((key, value) {
-      key = Characters(key);
-      value = value ? '✅' : '❌';
-      print('$value $key');
-    });
+void printTasks(Map tasks) {
+  tasks.forEach((key, value) {
+      if (key != 'totalTasks' && key != 'trueTasks') {
+        key = Characters(key);
+        value = value ? '✅' : '❌';
+        print('$value $key');
+      }
   });
 }
   
@@ -77,4 +80,5 @@ var tasks = getTasks(arguments);
 
 print('$greet\n$report');
 printTasks(tasks);
+print('You completed ${tasks['trueTasks']} of ${tasks['totalTasks']} tasks.');
 }
